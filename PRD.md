@@ -256,9 +256,10 @@ Signals:
 - TFLite text classifier score
 
 Output:
-- riskLevel: LOW/MEDIUM/HIGH
-- category: investment / impersonation / romance / prize / delivery / job / unknown
-- tactics: urgency / authority / paymentPressure / secrecy / fear / greed / etc.
+- riskProbability (0..1)
+- riskLevel derived from thresholds
+- tactics from heuristics (optional)
+- category = optional “unknown” (or coarse heuristic guess), but final category comes from Gemini
 
 Threshold:
 - MVP: Only create alerts for HIGH (and maybe MEDIUM if you want more demo data)
