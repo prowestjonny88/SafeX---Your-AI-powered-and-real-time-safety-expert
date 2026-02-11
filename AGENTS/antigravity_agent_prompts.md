@@ -157,7 +157,8 @@ Requirements:
   - For each:
     - OCR text (ML Kit)
     - QR detect (ML Kit barcode scanning)
-  - Run triage (heuristics + optional TFLite)
+  - Run triage (TFLite binary triage is the default for MVP; if not ready, fallback to heuristics-only)
+  - Do NOT implement multi-class TFLite
 - If image has link/QR link: warn to test via Home Scan (no auto Safe Browsing call).
 
 Deliverables:
