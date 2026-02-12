@@ -32,6 +32,12 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
 
+    // Weekly insights aggregation (written by Cloud Functions; app can read for Insights UI)
+    match /insightsWeekly/{weekId} {
+      allow read: if true;    // or: if isSignedIn() if you want auth required
+      allow write: if false;
+    }
+
     // Default: block everything else from the app
     match /{document=**} {
       allow read, write: if false;

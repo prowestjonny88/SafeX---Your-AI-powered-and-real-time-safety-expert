@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">SafeX</string>
+    <string name="tab_home">Laman Utama</string>
+    <string name="tab_alerts">Amaran</string>
+    <string name="tab_insights">Wawasan</string>
+    <string name="tab_settings">Tetapan</string>
+
+    <string name="scan">Imbas</string>
+    <string name="paste_link">Tampal pautan</string>
+    <string name="choose_image">Pilih imej</string>
+    <string name="scan_qr">Imbas QR</string>
+
+    <string name="report">Lapor</string>
+    <string name="mark_safe">Tandakan Selamat</string>
+
+    <string name="language">Bahasa</string>
+    <string name="language_english">English</string>
+    <string name="language_malay">Bahasa Melayu</string>
+    <string name="language_chinese">中文</string>
+
+    <string name="mode">Mod</string>
+    <string name="mode_guardian">Penjaga</string>
+    <string name="mode_companion">Teman</string>
+
+    <string name="news_title">Berita Scam</string>
+    <string name="news_disclaimer">Pautan berita dibuka dalam pelayar. Jangan masukkan kata laluan/OTP.</string>
+    <string name="news_malaysia">Malaysia</string>
+    <string name="news_global">Global</string>
+    <string name="refresh">Muat Semula</string>
+</resources>

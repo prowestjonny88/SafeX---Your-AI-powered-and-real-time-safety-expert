@@ -6,6 +6,11 @@ plugins {
 
 android {
     namespace = "com.safex.app"
+
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     compileSdk {
         version = release(36)
     }
@@ -57,4 +62,12 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:34.9.0"))
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-functions")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation("com.google.mlkit:text-recognition:16.0.0")
+    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+    implementation("com.google.mlkit:language-id:17.0.5")
+    implementation("com.google.mlkit:translate:17.0.3")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
 }

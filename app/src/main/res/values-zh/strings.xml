@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">SafeX</string>
+    <string name="tab_home">首页</string>
+    <string name="tab_alerts">警报</string>
+    <string name="tab_insights">洞察</string>
+    <string name="tab_settings">设置</string>
+
+    <string name="scan">扫描</string>
+    <string name="paste_link">粘贴链接</string>
+    <string name="choose_image">选择图片</string>
+    <string name="scan_qr">扫描二维码</string>
+
+    <string name="report">举报</string>
+    <string name="mark_safe">标记为安全</string>
+
+    <string name="language">语言</string>
+    <string name="language_english">English</string>
+    <string name="language_malay">Bahasa Melayu</string>
+    <string name="language_chinese">中文</string>
+
+    <string name="mode">模式</string>
+    <string name="mode_guardian">守护</string>
+    <string name="mode_companion">陪伴</string>
+
+    <string name="news_title">诈骗新闻</string>
+    <string name="news_disclaimer">新闻链接将在浏览器中打开。请勿输入密码/OTP。</string>
+    <string name="news_malaysia">马来西亚</string>
+    <string name="news_global">全球</string>
+    <string name="refresh">刷新</string>
+</resources>
