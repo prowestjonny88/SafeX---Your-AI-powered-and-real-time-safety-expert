@@ -7,25 +7,13 @@ plugins {
 }
 
 android {
-// ... existing android block ...
-}
-
-// tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-//    kotlinOptions {
-//        jvmTarget = "17"
-//    }
-// }
-
-android {
     namespace = "com.safex.app"
 
     androidResources {
         generateLocaleConfig = true
     }
 
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.safex.app"
@@ -98,9 +86,9 @@ dependencies {
     implementation("androidx.camera:camera-view:1.3.4")
 
     // Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
     // Navigation & UI
     implementation("androidx.navigation:navigation-compose:2.8.5")
