@@ -86,13 +86,13 @@ SafeX can run in **Guardian mode**, silently monitoring incoming content without
 
 Users can manually scan suspicious content from the Home tab:
 
-- **Paste Link** — Enter any URL and SafeX sends it to **Gemini 2.5 Flash** via Firebase Cloud Functions for deep analysis. Gemini examines domain structure, TLD suspiciousness, typosquatting patterns, brand impersonation, and known phishing patterns — then returns a structured risk assessment with reasons, recommended actions, and warnings. The backend also runs a **local heuristic check** (Levenshtein distance-based typosquatting detection against 30+ Malaysian and global brands) to give Gemini additional context.
-- **Pick Image** — Select an image from the gallery. SafeX uses **ML Kit Text Recognition** (OCR) and **ML Kit Barcode Scanning** (QR) to extract text and URLs, then runs them through the on-device triage engine for instant risk assessment.
-- **Camera Scan** — Real-time camera scanning using **CameraX**. Scan QR codes and printed text (posters, flyers, receipts) live. Extracted content is immediately triaged.
+- **Paste Link** — Enter any URL and SafeX sends it to **Gemini 2.5 Flash** via the `checkLink` Cloud Function for deep analysis. Gemini examines domain structure, TLD suspiciousness, typosquatting patterns, brand impersonation, and known phishing patterns — then returns a structured risk assessment with reasons, recommended actions, and warnings. The backend also runs a **local heuristic check** (Levenshtein distance-based typosquatting detection against 30+ Malaysian and global brands) to give Gemini additional context.
+- **Pick Image** — Select an image from the gallery. SafeX uses **ML Kit Text Recognition** (OCR) and **ML Kit Barcode Scanning** (QR) to extract text and URLs, then sends the extracted content directly to Gemini via the `explainAlert` Cloud Function for full AI analysis — bypassing on-device triage for maximum accuracy.
+- **Camera Scan** — Real-time camera scanning using **CameraX**. Scan QR codes and printed text (posters, flyers, receipts) live. Extracted content is sent directly to Gemini via `explainAlert` for immediate analysis.
 
 ### 3. 🧠 AI-Powered Explanation (Gemini 2.5 Flash)
 
-When a user opens an alert, SafeX calls the `explainAlert` Cloud Function which sends the alert data to **Gemini 2.5 Flash on Vertex AI**. Gemini acts as the ultimate judge — it can override on-device scores if the text is clearly benign (e.g., legitimate OTPs, university announcements) or clearly malicious (well-disguised scams). Gemini returns:
+During Guardian detection, when the on-device combined score ≥ 0.30, the `HybridTriageEngine` immediately calls `explainAlert` via Firebase Cloud Functions, which sends the alert data to **Gemini 2.5 Flash** (accessed through the **Google Gen AI SDK** with Vertex AI backend). Gemini acts as the ultimate judge — it can override on-device scores if the text is clearly benign (e.g., legitimate OTPs, university announcements) or clearly malicious (well-disguised scams). The Gemini analysis is **cached in the alert**, so when the user opens the alert detail, the explanation loads instantly. If no cache exists (e.g., Gemini was offline), a fresh call is made. Gemini returns:
 
 - **Risk Level** (HIGH / MEDIUM / LOW)
 - **Scam Category** (Phishing, Investment Scam, Love Scam, Job Scam, Impersonation, etc.)
@@ -136,20 +136,19 @@ SafeX supports **English, Bahasa Melayu, and Simplified Chinese** — the three 
 
 | Technology | How It's Used in SafeX |
 |------------|----------------------|
-| **Gemini 2.5 Flash** (via Vertex AI) | The AI backbone of SafeX. Used in 3 Cloud Functions: (1) `explainAlert` — analyzes flagged messages and returns structured scam explanations; (2) `checkLink` — performs deep URL phishing analysis with domain structure, typosquatting, and brand impersonation detection; (3) `periodicScamNewsScraper` — intelligently filters and summarizes scraped scam news articles, rejecting irrelevant content. |
+| **Gemini 2.5 Flash** (via Google Gen AI SDK + Vertex AI backend) | The AI backbone of SafeX. Accessed through the `@google/genai` SDK with `vertexai: true`, authenticated via the Cloud Functions service account (no API key needed). Used in 3 Cloud Functions: (1) `explainAlert` — analyzes flagged messages and returns structured scam explanations with category, risk level, and actionable advice; (2) `checkLink` — performs deep URL phishing analysis with domain structure, typosquatting, and brand impersonation detection; (3) `periodicScamNewsScraper` — intelligently filters and summarizes scraped scam news articles, rejecting irrelevant content. |
 | **Firebase Cloud Functions** (v2, TypeScript) | Hosts 5 serverless functions in `asia-southeast1`: `explainAlert`, `checkLink`, `getScamNewsDigest`, `periodicScamNewsScraper`, `backfillHistoricalScams`. All callable functions require Firebase Auth. Scheduled function runs hourly for news aggregation. |
 | **Firebase Authentication** (Anonymous) | Every device gets an anonymous auth token automatically. This secures all callable Cloud Functions without requiring user signup — critical for reducing friction for elder users. |
 | **Cloud Firestore** | Stores the `scam_news` collection — pre-processed, Gemini-verified scam news articles with titles, summaries, warnings/tips, source URLs, and timestamps. Indexed by `createdAt` for efficient retrieval. |
-| **Google Cloud Vertex AI API** | Provides the Gemini 2.5 Flash model endpoint. Cloud Functions authenticate via the service account's default credentials — no API key needed in code. |
 
 ### On-Device Google AI (ML Kit)
 
 | Technology | How It's Used in SafeX |
 |------------|----------------------|
 | **ML Kit Text Recognition** (OCR) | Extracts text from images during gallery scanning (Guardian mode) and manual image/camera scanning. Supports English and Chinese text recognition (`text-recognition` + `text-recognition-chinese`). |
-| **ML Kit Barcode Scanning** | Detects and decodes QR codes from images and camera feed. Extracted URLs are triaged through the scam detection pipeline. |
-| **ML Kit Language Identification** | Identifies the language of incoming notification text (EN/MS/ZH/other) to select appropriate heuristic pattern sets for scam detection. |
-| **ML Kit Translation** | Translates Gemini analysis results and news headlines into the user's selected language entirely **on-device** — no network call needed after the translation model is downloaded. Supports EN ↔ MS ↔ ZH. |
+| **ML Kit Barcode Scanning** | Detects and decodes QR codes from images and camera feed. Extracted URLs are either triaged (Guardian mode) or sent directly to Gemini (manual scan). |
+| **ML Kit Language Identification** | Included as a dependency (`language-id`) for future use in language-specific heuristic selection. Currently, the heuristic engine applies all language patterns (EN/MS/ZH) simultaneously. |
+| **ML Kit Translation** | Translates Gemini analysis results (headline, why flagged, what to do, what not to do), news headlines, and news summaries into the user's selected language entirely **on-device** — no network call needed after the initial model download. Supports EN ↔ MS ↔ ZH. |
 
 ### On-Device ML (TensorFlow Lite)
 
@@ -177,67 +176,95 @@ SafeX supports **English, Bahasa Melayu, and Simplified Chinese** — the three 
 ### System Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        ANDROID DEVICE                           │
-│                                                                 │
-│  ┌──────────────┐    ┌──────────────────────────────────────┐   │
-│  │ Notification  │    │        ON-DEVICE AI PIPELINE         │   │
-│  │ Listener      │───▶│                                      │   │
-│  │ Service       │    │  ┌────────────┐   ┌──────────────┐  │   │
-│  └──────────────┘    │  │ Heuristic  │   │  TFLite      │  │   │
-│                       │  │ Engine     │   │  Char-CNN    │  │   │
-│  ┌──────────────┐    │  │ (20% wt)   │   │  (80% wt)    │  │   │
-│  │ Gallery Scan │───▶│  └─────┬──────┘   └──────┬───────┘  │   │
-│  │ Worker       │    │        │    Combined      │          │   │
-│  └──────────────┘    │        └───────┬──────────┘          │   │
-│                       │               │                      │   │
-│  ┌──────────────┐    │        ┌──────▼──────┐               │   │
-│  │ Manual Scan  │───▶│        │ ≥ 0.50?     │               │   │
-│  │ (Link/Img/   │    │        │ Create Alert│               │   │
-│  │  Camera)     │    │        └─────────────┘               │   │
-│  └──────────────┘    └──────────────────────────────────────┘   │
-│         │                            │                          │
-│         │                    ┌───────▼───────┐                  │
-│  ML Kit │                    │  Room DB      │                  │
-│  (OCR,  │                    │  (Alerts +    │                  │
-│   QR,   │                    │   News Cache) │                  │
-│   Lang, │                    └───────────────┘                  │
-│   Trans)│                                                       │
-└─────────┼───────────────────────────────────────────────────────┘
-          │
-          │  Firebase Callable Functions
-          ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    GOOGLE CLOUD BACKEND                         │
-│                    (asia-southeast1)                             │
-│                                                                 │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌────────────────┐  │
-│  │ explainAlert    │  │ checkLink       │  │ getScamNews    │  │
-│  │ Cloud Function  │  │ Cloud Function  │  │ Digest         │  │
-│  │                 │  │                 │  │ Cloud Function │  │
-│  │ ┌─────────────┐│  │ ┌─────────────┐│  │                │  │
-│  │ │ Gemini 2.5  ││  │ │ Gemini 2.5  ││  │ Reads from     │  │
-│  │ │ Flash       ││  │ │ Flash       ││  │ Firestore      │  │
-│  │ │ (Vertex AI) ││  │ │ + Heuristic ││  │                │  │
-│  │ └─────────────┘│  │ │   checks    ││  │                │  │
-│  └─────────────────┘  │ └─────────────┘│  └────────────────┘  │
-│                        └─────────────────┘                      │
-│  ┌──────────────────────────────────────┐                       │
-│  │ periodicScamNewsScraper (Hourly)     │                       │
-│  │ Google News RSS → Gemini Filter →    │                       │
-│  │ Firestore (scam_news collection)     │                       │
-│  └──────────────────────────────────────┘                       │
-│                                                                 │
-│  ┌──────────────────┐  ┌──────────────────┐                    │
-│  │ Firebase Auth    │  │ Cloud Firestore  │                    │
-│  │ (Anonymous)      │  │ (scam_news)      │                    │
-│  └──────────────────┘  └──────────────────┘                    │
-└─────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│                          ANDROID DEVICE                              │
+│                                                                      │
+│  ── GUARDIAN MODE (Background Detection) ──────────────────────────  │
+│                                                                      │
+│  ┌──────────────┐    ┌─────────────────────────────────────────┐     │
+│  │ Notification  │    │     HYBRID TRIAGE ENGINE                │     │
+│  │ Listener     │───▶│                                         │     │
+│  │ Service       │    │  ┌────────────┐    ┌──────────────┐    │     │
+│  └──────────────┘    │  │ Heuristic  │    │  TFLite      │    │     │
+│                       │  │ Engine     │    │  Char-CNN    │    │     │
+│  ┌──────────────┐    │  │ (20% wt)   │    │  (80% wt)    │    │     │
+│  │ Gallery Scan │───▶│  └─────┬──────┘    └──────┬───────┘    │     │
+│  │ Worker       │    │        └───────┬──────────┘            │     │
+│  │ (ML Kit OCR  │    │         Combined Score                  │     │
+│  │  + QR scan)  │    │               │                         │     │
+│  └──────────────┘    │        ┌──────▼──────┐                  │     │
+│                       │        │  ≥ 0.30?    │                  │     │
+│                       │        └──────┬──────┘                  │     │
+│                       │               │ YES                     │     │
+│                       │        ┌──────▼──────────────────┐      │     │
+│                       │        │ Level 3: Gemini 2.5     │      │     │
+│                       │        │ Flash (explainAlert)    │      │     │
+│                       │        │ → Final risk judgment   │      │     │
+│                       │        │ → Explanation cached    │      │     │
+│                       │        └──────┬──────────────────┘      │     │
+│                       └──────────────┼─────────────────────────┘     │
+│                               ┌──────▼──────┐                        │
+│                               │ Create Alert│                        │
+│                               │ + Warning   │                        │
+│                               │ Notification│                        │
+│                               └──────┬──────┘                        │
+│                                      │                                │
+│  ── MANUAL SCAN (User-Initiated) ────┼──────────────────────────     │
+│                                      │                                │
+│  ┌──────────────┐                    │                                │
+│  │ Paste Link   │─── checkLink ──────┼──▶ Gemini (Cloud Function)    │
+│  └──────────────┘    (direct)        │                                │
+│  ┌──────────────┐                    │                                │
+│  │ Pick Image   │─ ML Kit OCR/QR ─── explainAlert ──▶ Gemini (CF)   │
+│  └──────────────┘   (bypass triage)  │                                │
+│  ┌──────────────┐                    │                                │
+│  │ Camera Scan  │─ CameraX+ML Kit ── explainAlert ──▶ Gemini (CF)   │
+│  └──────────────┘   (bypass triage)  │                                │
+│                                      ▼                                │
+│                              ┌───────────────┐                        │
+│  ┌────────────┐              │   Room DB      │                       │
+│  │ ML Kit     │              │   (Alerts +    │                       │
+│  │ Translation│◀────────────▶│   News Cache)  │                       │
+│  └────────────┘              └───────────────┘                        │
+└──────────────────────────────────────┬───────────────────────────────┘
+                                       │
+                                       │  Firebase Callable Functions
+                                       ▼
+┌──────────────────────────────────────────────────────────────────────┐
+│                      GOOGLE CLOUD BACKEND                            │
+│                      (asia-southeast1)                               │
+│                                                                      │
+│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐   │
+│  │ explainAlert     │  │ checkLink        │  │ getScamNews      │   │
+│  │ Cloud Function   │  │ Cloud Function   │  │ Digest (CF)      │   │
+│  │                  │  │                  │  │                  │   │
+│  │ ┌──────────────┐│  │ ┌──────────────┐│  │ Reads from       │   │
+│  │ │ Gemini 2.5   ││  │ │ Gemini 2.5   ││  │ Firestore        │   │
+│  │ │ Flash        ││  │ │ Flash        ││  │                  │   │
+│  │ │ (Vertex AI)  ││  │ │ + Heuristic  ││  │                  │   │
+│  │ └──────────────┘│  │ │   checks     ││  │                  │   │
+│  └──────────────────┘  │ └──────────────┘│  └──────────────────┘   │
+│                         └──────────────────┘                         │
+│  ┌──────────────────────────────────────────┐                        │
+│  │ periodicScamNewsScraper (Hourly)          │                        │
+│  │ Google News RSS → Gemini Filter/Summary → │                        │
+│  │ Firestore (scam_news collection)          │                        │
+│  └──────────────────────────────────────────┘                        │
+│                                                                      │
+│  ┌──────────────────┐  ┌──────────────────┐                         │
+│  │ Firebase Auth    │  │ Cloud Firestore  │                         │
+│  │ (Anonymous)      │  │ (scam_news)      │                         │
+│  └──────────────────┘  └──────────────────┘                         │
+└──────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Detection Pipeline — How SafeX Catches Scams
 
-SafeX uses a **3-level hybrid detection system** that combines speed (on-device) with intelligence (cloud AI):
+SafeX uses **two distinct detection paths** depending on the context:
+
+#### Path A: Guardian Mode (Background — Notification & Gallery Monitoring)
+
+A **3-level hybrid pipeline** runs automatically when a notification arrives or a new gallery image is detected:
 
 **Level 1 — Heuristic Rules Engine (20% weight)**
 A pattern-matching engine that detects scam indicators across EN/MS/ZH:
@@ -258,29 +285,53 @@ A custom character-level convolutional neural network trained on scam datasets:
 ```
 Combined Score = (Heuristic Score × 0.20) + (TFLite Score × 0.80)
 ```
-- Score ≥ **0.50** → Alert created + warning notification posted
-- Score ≥ **0.75** → Risk labeled as HIGH
-- Score ≥ **0.40** → Risk labeled as MEDIUM
+- Score **< 0.30** → No alert (low risk, user is not disturbed)
+- Score **≥ 0.30** → Escalate to Level 3 (Gemini)
+- Display label: ≥ 0.75 = HIGH | ≥ 0.40 = MEDIUM | < 0.40 = LOW
 
-**Level 3 — Gemini 2.5 Flash (Cloud, on-demand)**
-When the user opens an alert, Gemini receives:
+**Level 3 — Gemini 2.5 Flash (called inline, result cached)**
+When the combined score ≥ 0.30, the `HybridTriageEngine` immediately calls the `explainAlert` Cloud Function. Gemini receives:
 - The redacted text snippet (max 500 chars)
 - On-device heuristic and TFLite scores
 - Detected category and tactics
 
-Gemini acts as the **ultimate judge** — it can downgrade false positives (legitimate OTPs, marketing, event posters) to LOW risk, or confirm true positives with detailed explanations. It also determines the specific scam category (from 13 categories: Phishing, Investment Scam, Love Scam, Job Scam, E-commerce Scam, Impersonation Scam, Loan Scam, Giveaway Scam, Tech Support Scam, Deepfake, KK Farm Scam, Spam, Other).
+Gemini acts as the **ultimate judge**:
+- If Gemini determines the message is benign (legitimate OTP, university poster, delivery receipt), it returns `riskLevel: LOW` → **no alert is created**, preventing false positives
+- If Gemini confirms the threat, it returns a full structured explanation → the **alert is created with the Gemini analysis pre-cached**, so when the user opens the alert detail, the explanation loads instantly without another network call
+- Gemini also determines the specific scam category (from 13 types: Phishing, Investment Scam, Love Scam, Job Scam, E-commerce Scam, Impersonation Scam, Loan Scam, Giveaway Scam, Tech Support Scam, Deepfake, KK Farm Scam, Spam, Other)
+
+If the Gemini call fails (no internet), the alert is still created with the on-device scores, and Gemini is called when the user opens the alert detail.
+
+#### Path B: Manual Scan (User-Initiated)
+
+Manual scans **bypass the on-device triage entirely** and go straight to Gemini for maximum accuracy:
+
+- **Paste Link** → calls `checkLink` Cloud Function → Gemini 2.5 Flash analyzes the full URL for domain structure, TLD risk, typosquatting, brand impersonation, and phishing patterns. The backend also runs a Levenshtein-distance heuristic against 30+ brands for extra context.
+- **Pick Image** → ML Kit OCR + QR extracts text/URLs → sends directly to `explainAlert` Cloud Function → Gemini analyzes the extracted content
+- **Camera Scan** → CameraX + ML Kit OCR/QR → same as above, sends directly to Gemini
+
+This design decision means manual scan results are always **Gemini-quality** — no threshold filtering, no on-device shortcuts. The user explicitly asked to scan something, so they get the full AI analysis.
+
+#### Alert Detail Screen
+
+When the user opens an alert:
+1. If the alert has a **cached Gemini analysis** (from Level 3 during Guardian detection or from manual scan), it loads instantly
+2. If there is no cache (e.g., Gemini was offline during detection), a fresh `explainAlert` call is made
+3. **ML Kit Translation** then translates all explanation text (headline, why flagged, what to do, what not to do) into the user's selected language **on-device** — no additional cloud call needed
 
 ### Innovation Highlights
 
-1. **Hybrid AI Pipeline** — Combining fast on-device ML (< 50ms) with powerful cloud AI (Gemini) creates a system that is both instant and intelligent. On-device triage handles 99% of decisions without any network call.
+1. **3-Level Hybrid AI Pipeline** — On-device heuristics + TFLite provide instant triage (< 50ms), while Gemini 2.5 Flash acts as the inline final judge during Guardian detection. This means alerts arrive with **pre-cached Gemini explanations** — the user sees the full analysis immediately.
 
-2. **False-Positive-Tolerant Design** — We deliberately tuned the on-device threshold to **favor detection over precision**. It's better to warn a user about a potential scam that turns out to be safe, than to miss a real scam. Gemini then acts as the second opinion to filter out false positives when the user reviews the alert.
+2. **False-Positive-Tolerant Design** — We deliberately set the on-device escalation threshold low (0.30) to **catch every possible scam**. Gemini then filters out false positives inline before the alert is even created. It's better to let Gemini evaluate a borderline message than to silently miss a real scam.
 
-3. **Privacy-First Architecture** — No raw conversations, images, or full URLs ever leave the device by default. Gemini only receives redacted snippets (max 500 chars) when the user explicitly opens an alert. No personal data is stored in the cloud.
+3. **Dual Detection Paths** — Guardian mode uses the fast 3-level pipeline for zero-effort background protection. Manual scans bypass the on-device pipeline entirely and go straight to Gemini for maximum accuracy. Each path is optimized for its use case.
 
-4. **Scam News Intelligence Pipeline** — Rather than showing raw RSS feeds, every news article passes through Gemini for relevance filtering and summarization. This ensures users only see mobile-targeted scam news with actionable tips — not corporate fraud or unrelated cybersecurity news.
+4. **Privacy-First Architecture** — No raw conversations, images, or full URLs ever leave the device by default. Gemini only receives redacted snippets (max 500 chars). No personal data is stored in the cloud.
 
-5. **Multi-Script Detection** — The Char-CNN model and heuristic engine both handle English, Malay, and Chinese text natively — critical for Malaysia's multilingual population. The character-level approach means the model can handle mixed-language messages (code-switching).
+5. **Scam News Intelligence Pipeline** — Rather than showing raw RSS feeds, every news article passes through Gemini for relevance filtering and summarization. This ensures users only see mobile-targeted scam news with actionable tips — not corporate fraud or unrelated cybersecurity news.
+
+6. **Multi-Script Detection** — The Char-CNN model and heuristic engine both handle English, Malay, and Chinese text natively — critical for Malaysia's multilingual population. The character-level approach means the model handles mixed-language messages (code-switching) naturally.
 
 ### App Workflow
 
@@ -305,8 +356,8 @@ Gemini acts as the **ultimate judge** — it can downgrade false positives (legi
 ┌──────────┐  ┌──────────┐  ┌──────────┐
 │ Link     │  │ Image    │  │ Camera   │
 │ Scan     │  │ Scan     │  │ Scan     │
-│ (Gemini) │  │ (ML Kit  │  │ (CameraX │
-│          │  │  + Triage)│  │+ ML Kit) │
+│(checkLink│  │ (ML Kit  │  │ (CameraX │
+│  Gemini) │  │→ Gemini) │  │→ Gemini) │
 └──────────┘  └──────────┘  └──────────┘
         │            │            │
         └────────────┼────────────┘
@@ -319,28 +370,27 @@ Gemini acts as the **ultimate judge** — it can downgrade false positives (legi
 │                     ▼                               │
 │  ┌──────────────────────────────────────────────┐  │
 │  │  ALERT DETAIL SCREEN                         │  │
-│  │  • Gemini Explanation (Why / Do / Don't)     │  │
-│  │  • Score Breakdown (Heuristic + TFLite)      │  │
-│  │  • ML Kit Translation (if non-English)       │  │
-│  │  • [Mark Safe] button                        │  │
+│  │  • Cached Gemini Explanation (instant load)  │  │
+│  │  • Score Breakdown (Heuristic + TFLite %)    │  │
+│  │  • ML Kit Translation (on-device)            │  │
+│  │  • [Mark Safe] button → deletes alert        │  │
 │  └──────────────────────────────────────────────┘  │
 └────────────────────────────────────────────────────┘
 
 ┌────────────────────────────────────────────────────┐
 │                  INSIGHTS TAB                       │
-│  • Personal Weekly Summary (local stats)            │
-│  • Education Tips                                   │
+│  • Safety Tips (Education carousel)                 │
 │  • Scam News Feed (Gemini-curated from Firestore)   │
 │  • News Translation (ML Kit on-device)              │
 └────────────────────────────────────────────────────┘
 
 ┌────────────────────────────────────────────────────┐
 │                  SETTINGS TAB                       │
+│  • Language Selection (EN / MS / ZH)                │
 │  • Mode Selection (Guardian / Companion)            │
 │  • Notification Monitoring Toggle                   │
 │  • Gallery Monitoring Toggle                        │
-│  • Language Selection (EN / MS / ZH)                │
-│  • Reset Local Data                                 │
+│  • About / Version Info                             │
 └────────────────────────────────────────────────────┘
 ```
 
@@ -354,7 +404,7 @@ The biggest challenge was building a TFLite model that could reliably detect sca
 
 After extensive experimentation with different architectures and datasets on Google Colab and Kaggle, we adopted a **character-level CNN (Char-CNN)** approach. Unlike word-level models, Char-CNN processes raw characters, making it naturally robust to typos, mixed scripts, and character substitutions that scammers frequently use (e.g., "M@ybank" instead of "Maybank"). However, the trade-off is that the model may flag some legitimate messages as suspicious.
 
-We made a deliberate design decision to embrace this: **we chose to prioritize recall (catching every scam) over precision (avoiding false alarms)**. Our philosophy is that it is far better to warn a user about a message that turns out to be safe, than to miss a real scam that leads to financial loss. The false-positive-tolerant on-device model acts as a safety net, while **Gemini 2.5 Flash serves as the intelligent second opinion** — when users open an alert, Gemini can accurately downgrade false positives (like legitimate bank OTPs or university announcements) while confirming real threats.
+We made a deliberate design decision to embrace this: **we chose to prioritize recall (catching every scam) over precision (avoiding false alarms)**. Our philosophy is that it is far better to warn a user about a message that turns out to be safe, than to miss a real scam that leads to financial loss. The false-positive-tolerant on-device model acts as a safety net, while **Gemini 2.5 Flash serves as the inline second opinion** — during Guardian detection, when the on-device score exceeds the threshold, Gemini is called immediately to either confirm the threat (creating an alert with a pre-cached explanation) or downgrade false positives (like legitimate bank OTPs or university announcements) before the alert is even created.
 
 ### 2. Gemini Prompt Engineering for Structured Output
 
@@ -400,8 +450,8 @@ Integrating multiple Google SDKs (Firebase, ML Kit, TFLite, CameraX, Room, Compo
 
 3. **Enable Google Cloud APIs**
    - In [Google Cloud Console](https://console.cloud.google.com), enable:
-     - **Vertex AI API** (for Gemini 2.5 Flash)
-     - **Safe Browsing API** (optional, for extended URL checks)
+     - **Vertex AI API** (for Gemini 2.5 Flash access via Google Gen AI SDK)
+     - **Safe Browsing API** (used by `explainAlert` Cloud Function for optional URL safety lookup on manual scans)
 
 4. **Deploy Cloud Functions**
    ```bash
@@ -447,8 +497,9 @@ SafeX is designed to be **privacy-first**:
 - ❌ Does **NOT** read private chat history — only notification previews (what the OS exposes)
 - ❌ Does **NOT** upload full conversations or images
 - ❌ Does **NOT** store any personal data on the cloud
-- ✅ Gemini receives only **redacted text snippets** (max 500 chars) when the user explicitly opens an alert
-- ✅ All detection runs **on-device first** — cloud is only used for explanation and news
+- ✅ Gemini receives only **redacted text snippets** (max 500 chars) — never full messages or images
+- ✅ On-device triage runs first — Gemini is called only when the on-device score exceeds the threshold, or when the user manually scans something
+- ✅ All scam news is pre-processed server-side — no user data is involved in news aggregation
 
 ---
 
