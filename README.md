@@ -534,7 +534,7 @@ On first launch, SafeX will ask for several permissions during onboarding:
 
 SafeX is designed to be **privacy-first**:
 
-- ❌ Does **NOT** read OTP codes
+- ❌ Does **NOT** request SMS permission or extract OTPs for login; if an OTP appears in a notification preview, SafeX does not store or upload it.
 - ❌ Does **NOT** bypass WhatsApp encryption
 - ❌ Does **NOT** read private chat history — only notification previews (what the OS exposes)
 - ❌ Does **NOT** upload full conversations or images
