@@ -1,0 +1,8 @@
+﻿"metric","value","unit"
+"message_markers","11","count"
+"median_loop_duration","6","ms"
+"p95_loop_duration","11.1","ms"
+"testcase_duration","0.059","s"
+"normalized_for_model_count","12","count"
+"hybrid_calling_gemini_count","0","count"
+"hybrid_below_threshold_count","0","count"

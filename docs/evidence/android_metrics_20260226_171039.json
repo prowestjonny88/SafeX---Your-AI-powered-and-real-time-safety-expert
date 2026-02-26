@@ -1,0 +1,29 @@
+﻿{
+    "generatedAt":  "2026-02-26T17:10:39",
+    "logFile":  "C:\\Users\\JON\\OneDrive\\Documents\\SafeX---Your-AI-powered-and-real-time-safety-expert\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Medium_Phone_API_36.1(AVD) - 16\\logcat-com.safex.app.ModelThresholdTest-testMessages.txt",
+    "junitFile":  "C:\\Users\\JON\\OneDrive\\Documents\\SafeX---Your-AI-powered-and-real-time-safety-expert\\app\\build\\outputs\\androidTest-results\\connected\\debug\\TEST-Medium_Phone_API_36.1(AVD) - 16-_app-.xml",
+    "messageMarkers":  11,
+    "perMessageLoopDurationsMs":  [
+                                      4,
+                                      3,
+                                      12,
+                                      7,
+                                      9,
+                                      7,
+                                      4,
+                                      4,
+                                      5,
+                                      10
+                                  ],
+    "medianLoopDurationMs":  6,
+    "p95LoopDurationMs":  11.1,
+    "testcaseDurationSeconds":  0.059,
+    "normalizedForModelCount":  12,
+    "hybridCallingGeminiCount":  0,
+    "hybridBelowThresholdCount":  0,
+    "notes":  [
+                  "ModelThresholdTest currently prints escaped placeholders for score values.",
+                  "This evidence captures timing and execution volume without app code changes.",
+                  "Hybrid escalation counts are expected to be zero in this test because HybridTriageEngine is not executed."
+              ]
+}

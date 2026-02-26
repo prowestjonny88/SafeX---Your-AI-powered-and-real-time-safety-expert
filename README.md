@@ -47,15 +47,19 @@
 
 ### Problem Statement
 
-Scam losses in Malaysia reached **RM3.18 billion** between 2021–2023, with over **95,800 cases** reported in 2023 alone. Globally, consumers lost over **$10 billion** to fraud in 2023. Scammers don't succeed because victims are careless — they succeed because they exploit fundamental human psychology:
+Scam losses in Malaysia are escalating fast: the Royal Malaysia Police (PDRM) recorded **67,735 online crime cases** from **Jan–Nov 2025**, involving **losses exceeding RM2.7 billion**.[^my1] Investment-related scams alone accounted for **over RM1.37 billion** in losses—one of the biggest drivers of harm.[^my1] Internationally, the FBI’s IC3 reported **reported losses exceeding $16 billion in 2024**, showing the scale of scam-driven harm even in highly digitised markets.[^global1]
 
-- **Urgency** — "Act now or your account will be locked"
-- **Authority** — Impersonating banks, police, or delivery companies
-- **Fear & Shame** — "Your account is compromised"
-- **Greed** — "Guaranteed 300% investment returns"
-- **Isolation** — "Don't tell anyone about this"
+Scammers don’t succeed because victims are careless — they succeed because they exploit fundamental human psychology:
+- **Urgency** — “Act now or your account will be locked”
+- **Authority** — Impersonating banks, police, delivery companies
+- **Fear & Shame** — “Your account is compromised”
+- **Greed** — “Guaranteed returns”
+- **Isolation** — “Don’t tell anyone about this”
 
 By the time a victim realizes they are being scammed, they are already emotionally controlled. **There is no tool that intervenes at the moment of manipulation** — before the victim clicks, transfers money, or shares credentials.
+
+[^my1]: PDRM/Bukit Aman CCID statement reported by Bernama (via The Star), Dec 8, 2025.  
+[^global1]: FBI press release: “FBI Releases Annual Internet Crime Report” (2024 IC3 report), Apr 23, 2025.
 
 ### Our Solution
 
