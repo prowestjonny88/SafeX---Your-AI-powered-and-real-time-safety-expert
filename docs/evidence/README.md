@@ -86,6 +86,16 @@ Report:
 Minimum prototype set:
 - 50 benign + 50 scam samples (mixed language)
 
+Current repo test harness (no production logic changes):
+
+```powershell
+.\gradlew.bat :app:connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=com.safex.app.FprDatasetTest" --no-daemon
+```
+
+Current artifacts:
+- `fpr_confusion_matrix_20260226.md`
+- `fpr_confusion_matrix_20260226.json`
+
 ---
 
 ## 5) Submission checklist
