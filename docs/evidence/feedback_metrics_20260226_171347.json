@@ -1,0 +1,35 @@
+﻿{
+    "generatedAt":  "2026-02-26T17:13:47",
+    "xlsxPath":  "C:\\Users\\JON\\OneDrive\\Documents\\SafeX---Your-AI-powered-and-real-time-safety-expert\\docs\\user_feedback\\SafeX User Test (KitaHack 2026) — Feedback Form (Responses) (1).xlsx",
+    "responseCount":  11,
+    "means":  {
+                  "understand":  3.182,
+                  "knowWhatToDoNext":  3.455,
+                  "speed":  4.273,
+                  "trust":  4.273
+              },
+    "medians":  {
+                    "understand":  4,
+                    "knowWhatToDoNext":  4,
+                    "speed":  5,
+                    "trust":  4
+                },
+    "pctAtLeast4":  {
+                        "understand":  45.45,
+                        "knowWhatToDoNext":  63.64
+                    },
+    "consent":  {
+                    "quoteUse":  {
+                                     "total":  11,
+                                     "yes":  11
+                                 },
+                    "feedbackUse":  {
+                                        "total":  11,
+                                        "yes":  11
+                                    }
+                },
+    "adoptionIntent":  {
+                           "total":  11,
+                           "yes":  10
+                       }
+}

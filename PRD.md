@@ -24,7 +24,7 @@ The MVP is optimized for **demo reliability**, **explainability**, and **respons
 1. **Early detection** from notification previews and suspicious saved images (Guardian mode).
 2. **Instant warning notification** when high risk is detected.
 3. **Alert review flow**: tapping notification opens Alerts tab + alert detail.
-4. **Gemini-powered explanation** on alert detail (lazy-loaded to reduce cost).
+4. **Gemini-powered explanation** with inline Guardian escalation and cached detail rendering.
 5. **Manual Scan** from Home (paste link / choose image / camera scan).
 6. **Report → Insights update** with privacy-safe aggregated statistics.
 
@@ -103,7 +103,9 @@ The MVP is optimized for **demo reliability**, **explainability**, and **respons
 
 **Gemini requirement:**
 - Gemini must provide structured explanation.
-- Gemini is called only when the detail screen opens.
+- In Guardian mode, if on-device combined score >= 0.30, Gemini is called immediately during background triage.
+- Gemini analysis is cached in the alert for instant detail rendering.
+- If cache is missing (for example, network failed during triage), detail screen may call Gemini on demand.
 - If offline / error: fallback generic advice.
 
 **Acceptance criteria:**
@@ -202,13 +204,21 @@ The MVP is optimized for **demo reliability**, **explainability**, and **respons
 2. SafeX reads preview text (NotificationListenerService)
 3. On-device triage:
    - heuristics + TFLite score
-4. If HIGH risk:
-   - Save local alert (Room)
+   - combined score threshold check (>= 0.30 escalates)
+4. If combined score < 0.30:
+   - No alert created
+5. If combined score >= 0.30:
+   - Call `explainAlert` immediately in background
+   - Gemini acts as final judge
+6. If Gemini final risk is MEDIUM/HIGH:
+   - Save local alert (Room) with cached Gemini analysis
    - Post SafeX warning notification
-5. User taps SafeX notification
-6. App opens Alerts tab + detail
-7. Gemini explanation loads
-8. User chooses:
+7. If Gemini final risk is LOW:
+   - Do not create alert
+8. User taps SafeX notification
+9. App opens Alerts tab + detail
+10. Detail loads cached Gemini analysis instantly (or calls Gemini if cache missing)
+11. User chooses:
    - Report → Insights updated
    - Mark safe → alert deleted
 
@@ -264,13 +274,18 @@ Output:
 Threshold:
 - MVP: Only create alerts for HIGH (and maybe MEDIUM if you want more demo data)
 
-### 6.2 Cloud reasoning (Gemini) — only on review
+### 6.2 Cloud reasoning (Gemini) — inline in Guardian flow + detail fallback
 Inputs (privacy-minimized):
 - alertType
 - category, tactics
 - redacted snippet (max 500 chars)
 - extractedUrl (optional)
 - (optional) Safe Browsing result if user manually scanned
+
+Invocation rules:
+- Guardian mode auto-detection: call `explainAlert` immediately when combined score >= 0.30.
+- Manual scans: call Gemini directly (user-initiated).
+- Alert detail: use cached Gemini analysis first; call `explainAlert` only when cache is unavailable.
 
 Output schema:
 - riskLevel, headline
@@ -348,7 +363,8 @@ Battery:
 ### B) Alert detail explanation
 - Given an alert exists
 - When user opens detail screen
-- Then app calls `explainAlert` and renders whyFlagged + actions
+- Then app renders cached Gemini explanation (whyFlagged + actions)
+- If cache is missing, app calls `explainAlert` and renders fallback/response
 - If function fails, app shows fallback advice
 
 ### C) Reporting updates insights

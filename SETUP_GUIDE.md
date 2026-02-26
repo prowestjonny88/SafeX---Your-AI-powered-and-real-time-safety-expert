@@ -19,9 +19,11 @@ Follow it in order. If you skip anything, you’ll likely get build/deploy error
 - **No “hard link blocking” / no intercept-on-tap** in MVP.  
   If a message/image contains a link, SafeX warns and tells the user to **test the link manually** in the **Scan** feature from **Home**.
 
-**Gemini usage (minimize calls):**
-- Gemini is used for **clear explanation + advice** in the **Alert detail screen**.
-- To minimize cost, the app **should call Gemini only when the user opens an alert** (lazy load), not at detection time.
+**Gemini usage (current architecture):**
+- In Guardian mode, if combined on-device score >= 0.30, the app calls `explainAlert` immediately during background triage.
+- Gemini returns the final verdict; only MEDIUM/HIGH alerts are persisted and notified.
+- Gemini analysis is cached in Room so alert detail opens instantly.
+- If cache is missing (for example, network failed during triage), alert detail can call `explainAlert` on demand.
 
 **Insights data (privacy-first):**
 - Insights are updated **only when user taps “Report” on an alert**.
@@ -297,7 +299,7 @@ These are not sensitive.
 ## 10) Write Cloud Functions (2 callable functions)
 
 You will deploy:
-1. `explainAlert` — Gemini explanation + advice for an alert (called when user opens alert)
+1. `explainAlert` — Gemini explanation + final verdict for Guardian escalation (plus detail fallback/manual flows)
 2. `reportAlert` — increments aggregated counters in Firestore for Insights
 
 ### 10.1 Create `functions/src/index.ts`
@@ -357,7 +359,8 @@ async function safeBrowsingLookup(urls: string[], apiKey: string) {
 }
 
 // ---- Callable: explainAlert ----
-// Called from Android only when user opens an alert detail screen.
+// Called from Android during Guardian escalation (combined score >= 0.30),
+// and also used as fallback when alert detail has no cached Gemini analysis.
 export const explainAlert = onCall(
   {
     secrets: [SAFE_BROWSING_API_KEY],
@@ -1081,7 +1084,8 @@ Any agent that depends on cloud setup must:
 ✅ App opens; 4 tabs visible  
 ✅ Guardian mode: notification access toggle UI works (opens system settings)  
 ✅ A fake scam notification triggers local SafeX notification → tap opens alert detail  
-✅ Alert detail calls Gemini (Cloud Function) and shows “Why flagged / What to do”  
+✅ Guardian high-risk candidate (combined >= 0.30) triggers inline Gemini call; MEDIUM/HIGH creates alert with cached analysis  
+✅ Alert detail shows cached Gemini explanation instantly (or calls Gemini fallback if cache is missing)  
 ✅ User can hit Report → Insights numbers update  
 ✅ Home Scan: paste URL → Safe Browsing check → show result  
 

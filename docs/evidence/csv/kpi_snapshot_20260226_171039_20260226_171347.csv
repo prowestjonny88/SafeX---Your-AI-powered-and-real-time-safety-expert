@@ -1,0 +1,7 @@
+﻿"kpi","value","baseline","target","status"
+"on_device_latency_median_ms","6","6","<50","measured"
+"on_device_latency_p95_ms","11.1","11.1","<50","measured"
+"guardian_gemini_escalation_rate_pct","","~20 (placeholder)","<15","pending"
+"false_positive_rate_pct","","~10 (pilot estimate)","<5","pending"
+"user_understand_mean","3.182","3.182",">=4.0","measured"
+"user_next_action_mean","3.455","3.455",">=4.0","measured"
