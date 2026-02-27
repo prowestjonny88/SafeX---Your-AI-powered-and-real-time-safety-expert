@@ -33,7 +33,7 @@
 | Name | Role |
 |------|------|
 | **Ooi Fu Chuin** | Lead Developer & AI Integration |
-| **Ng Hong Jon** | Developer |
+| **Ng Hong Jon** | Developer & AI Model Training |
 | **Tan Sze Yung** | Developer |
 | **Lai Joe Ming** | Developer |
 
