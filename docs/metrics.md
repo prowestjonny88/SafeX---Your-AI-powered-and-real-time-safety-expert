@@ -16,7 +16,7 @@ Why these metrics:
 |---|---:|---:|---|
 | On-device latency (heuristics + TFLite) | Median 6 ms, p95 11.1 ms (measured) | < 50 ms | Must feel instant during notification interception. |
 | Guardian Gemini escalation rate | Pending final measurement (current placeholder: ~20%) | < 15% | Controls cloud cost and privacy exposure; most triage stays on-device. |
-| False positive rate | ~10% (pilot estimate) | < 5% | High false alarms reduce trust and adoption. |
+| False positive rate | 31.2% (measured on labeled 300-row run) | < 5% | High false alarms reduce trust and adoption. |
 | User comprehension ("why flagged" + "what next") | 3.182/5 and 3.455/5 means (n=11, measured) | >= 4.0/5 mean | Users must understand risk and next actions. |
 
 Important note:
@@ -31,6 +31,11 @@ Measured now:
   - median per-message loop duration: 6 ms
   - p95 per-message loop duration: 11.1 ms
   - source: `docs/evidence/android_metrics_20260226_171039.*`
+- On-device labeled evaluation (device run):
+  - confusion matrix: `TP=45, FP=78, TN=172, FN=5` (total 300)
+  - FPR: `0.312` (31.2%)
+  - TPR/recall: `0.900` (90.0%)
+  - source: `docs/evidence/fpr_confusion_matrix_20260226.*`
 - User feedback metrics from XLSX export:
   - understand what SafeX detected: mean 3.182/5
   - knew what to do next: mean 3.455/5
@@ -38,7 +43,6 @@ Measured now:
 
 Pending:
 - Guardian Gemini escalation rate (true production ratio)
-- False positive rate (confusion matrix over labeled set)
 
 ---
 
@@ -118,6 +122,20 @@ Evidence:
 - evaluation notebook output
 - confusion matrix artifact
 
+Latest measured run (2026-02-26):
+- test class: `com.safex.app.FprDatasetTest`
+- command:
+  - `.\gradlew.bat :app:connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=com.safex.app.FprDatasetTest" --no-daemon`
+- dataset used in test APK assets: `app/src/androidTest/assets/fpr_test_200.csv`
+- totals observed by test:
+  - `TP=45, FP=78, TN=172, FN=5, TOTAL=300`
+  - `FPR = 78 / (78 + 172) = 0.312` (31.2%)
+  - `Recall = 45 / (45 + 5) = 0.900` (90.0%)
+
+Benign-only slice from the original `fpr_test_200` rows:
+- `FP=56, TN=144` (200 benign rows)
+- `FPR = 56 / 200 = 0.28` (28.0%)
+
 ---
 
 ### 2.4 User comprehension
@@ -189,6 +207,8 @@ Target cost controls:
 Primary evidence files:
 - `docs/evidence/android_metrics_20260226_171039.md`
 - `docs/evidence/android_metrics_20260226_171039.json`
+- `docs/evidence/fpr_confusion_matrix_20260226.md`
+- `docs/evidence/fpr_confusion_matrix_20260226.json`
 - `docs/evidence/feedback_metrics_20260226_171347.md`
 - `docs/evidence/feedback_metrics_20260226_171347.json`
 - `docs/evidence/METRICS_EVIDENCE_SUMMARY.md`
@@ -196,5 +216,5 @@ Primary evidence files:
 Limitations (current tooling run):
 1. `ModelThresholdTest` currently prints escaped placeholders for score values, so it is valid for timing/volume evidence but not for exact score-distribution plots.
 2. Guardian escalation-rate cannot be finalized from benchmark test alone because that test path does not execute real Guardian `HybridTriageEngine` traffic in the field.
-3. FPR is pending a labeled benign/scam evaluation set run and confusion matrix export.
+3. Current FPR run used a prototype labeled set from local test assets; for final submission, increase sample size and include independently reviewed labels.
 4. Graph plotting was not auto-generated in this run; raw numeric artifacts are generated and ready for plotting in Excel/Sheets.

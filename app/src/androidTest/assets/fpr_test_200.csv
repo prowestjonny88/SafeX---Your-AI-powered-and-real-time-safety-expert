@@ -1,0 +1,302 @@
+﻿sample_id,expected_label_id,expected_label,lang,channel,subtype,text
+f5666e14d2f5,0,benign,mix,whatsapp,Refund_Legit,WhatsApp: Pemulangan dana RM 819.04 berjaya diproses. Ruj 405411.
+3bdb646faf07,0,benign,ms,whatsapp,OTP_Legit,Maybank: OTP 670546 untuk log masuk. Jangan kongsi kod ini. Sah 5 minit.
+d2ea90428802,0,benign,en,telegram,Refund_Legit,Shopee: Refund RM 599.48 has been processed to your original payment method. Ref 513709.
+b5c74356ffbd,0,benign,ms,whatsapp,Utility_Bill_Legit,【TNB】账单 RM 182.58 到期 15/03。请通过官方App缴费。参考号 950145。
+51a416745cde,0,benign,ms,whatsapp,QR_Payment_Legit,【DuitNow】已收到付款 RM 793.90，参考号 621372。
+fa79a9ec52fe,0,benign,mix,whatsapp,Job_Recruiter_Legit,"Hi Hakim, we reviewed your resume. Are you free for a short call today 2:15pm? Reply YES/NO."
+b69cf70567ab,0,benign,mix,whatsapp,Marketplace_Chat_Legit,"Sis, boleh COD esok 8pm? Saya nak ambil dekat Mid Valley."
+2f81dbbfd5fc,0,benign,ms,sms,QR_Payment_Legit,DuitNow: Pembayaran diterima RM 174.73. Ruj 049047. Terima kasih.
+587c7ff82fdc,0,benign,ms,sms,Telco_Notice_Legit,Maxis: Bil anda RM 112.18 telah dijana. Bayar sebelum 28/03. Semak dalam aplikasi Maxis.
+46d7f179ab14,0,benign,en,sms,QR_Payment_Legit,【DuitNow】已收到付款 RM 520.64，参考号 806706。
+1a3b75c58805,0,benign,ms,sms,2FA_Login_Legit,Shopee: Kod 996423 untuk log masuk. Jangan kongsi kod ini.
+749b9d903ebe,0,benign,mix,sms,Job_Recruiter_Legit,您好Nur，我们收到您的申请，可否在7:45pm进行简短面试？
+3091764ae066,0,benign,en,sms,Refund_Legit,TikTok Shop: Refund RM 334.71 has been processed to your original payment method. Ref 148769.
+3a3db07327e9,0,benign,en,sms,Telco_Notice_Legit,TM: Your bill RM 779.92 is ready. Pay by 26/03. View in TM app.
+97af185a21ec,0,benign,zh,whatsapp,Refund_Legit,【WhatsApp】退款 RM 789.06 已处理，参考号 254729。
+d4a26b0052ea,0,benign,ms,telegram,Refund_Legit,Shopee: Refund RM 66.13 has been processed to your original payment method. Ref 179931.
+b46de136010d,0,benign,en,sms,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天10am自取，可以发地点吗？
+c07663da6fd1,0,benign,mix,telegram,Utility_Bill_Legit,TNB: Your bill RM 587.19 due 19/03. Pay via official app. Ref 649578.
+a7bbbfcb64a1,0,benign,ms,whatsapp,Refund_Legit,TikTok Shop: Refund RM 9.78 has been processed to your original payment method. Ref 275326.
+6fd2c6841dba,0,benign,ms,whatsapp,Telco_Notice_Legit,【Unifi】账单 RM 96.51 已生成，请于 14/03 前缴付。
+88c26d0fab1e,0,benign,mix,sms,Courier_Update_Legit,【DHL】包裹已到达派送站点，运单号 322259136517。请留意派送。
+1e9307199524,0,benign,en,whatsapp,OTP_Legit,Maybank: OTP 556464 untuk log masuk. Jangan kongsi kod ini. Sah 5 minit.
+637af0204470,0,benign,mix,telegram,OTP_Legit,【OCBC】验证码 622517。请勿泄露给任何人。5分钟内有效。
+2fb4902411c5,0,benign,mix,sms,Refund_Legit,Instagram: Pemulangan dana RM 882.46 berjaya diproses. Ruj 156915.
+95264475adb0,0,benign,zh,whatsapp,OTP_Legit,CIMB: OTP 403317 untuk log masuk. Jangan kongsi kod ini. Sah 5 minit.
+0dc65ab601a8,0,benign,zh,whatsapp,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天4:30pm自取，可以发地点吗？
+1ea9604bf7b3,0,benign,en,sms,2FA_Login_Legit,Shopee: Use code 486661 to complete sign-in. Do not share this code.
+93f83395f486,0,benign,mix,whatsapp,Gov_Reminder_Legit,MOH: Reminder—please complete the required step before 02/03. Ignore if already done.
+a72d9c983263,0,benign,mix,sms,CustomerSupport_Callback_Legit,【客服】工单 990413 已创建，将在24小时内联系您。
+db6edf0841e5,0,benign,en,whatsapp,Utility_Bill_Legit,TNB: Your bill RM 869.61 due 16/03. Pay via official app. Ref 595794.
+5b9f19c3b47c,0,benign,ms,whatsapp,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天7:45pm自取，可以发地点吗？
+a20f9e36dc7d,0,benign,en,whatsapp,Marketplace_Chat_Legit,"Sis, boleh COD esok 2:15pm? Saya nak ambil dekat KL Sentral."
+e4129fb99114,0,benign,en,sms,Courier_Update_Legit,【PosLaju】包裹已到达派送站点，运单号 130756263689。请留意派送。
+4d0238d0ff84,0,benign,en,whatsapp,Refund_Legit,TikTok Shop: Pemulangan dana RM 179.70 berjaya diproses. Ruj 258673.
+606c10d8962d,0,benign,mix,sms,OTP_Legit,【BSN】验证码 884879。请勿泄露给任何人。5分钟内有效。
+e64ea18c74c9,0,benign,zh,sms,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天8pm自取，可以发地点吗？
+c0fa5a2e68f5,0,benign,mix,sms,Courier_Update_Legit,【J&T】包裹已到达派送站点，运单号 722569961125。请留意派送。
+9e86566ddc22,0,benign,ms,sms,CustomerSupport_Callback_Legit,Maybank Support: Ticket 829979 created. Our agent will call within 24 hours.
+070fbf5ed75a,0,benign,en,sms,OTP_Legit,【CIMB】验证码 545381。请勿泄露给任何人。5分钟内有效。
+5bdc82060469,0,benign,mix,sms,Telco_Notice_Legit,【TM】账单 RM 612.49 已生成，请于 02/03 前缴付。
+ccbcbd726e30,0,benign,zh,whatsapp,Bank_Alert_Legit,"Maybank Alert: Card purchase RM 274.65 at Shell. Ref 126042. If not you, call Maybank hotline."
+aa5fbc9c4fc7,0,benign,ms,sms,Courier_Update_Legit,【J&T】包裹已到达派送站点，运单号 675677002842。请留意派送。
+44aead4a061a,0,benign,en,sms,Telco_Notice_Legit,Unifi: Your bill RM 406.39 is ready. Pay by 04/03. View in Unifi app.
+b4f8facc78a0,0,benign,mix,whatsapp,Appointment_Legit,"Klinik: Temujanji pada 13/03 3pm. Balas 1 sahkan, 2 tukar masa."
+09fcb23af1ac,0,benign,mix,whatsapp,CustomerSupport_Callback_Legit,Public Bank Support: Ticket 308488 created. Our agent will call within 24 hours.
+19350d0fe557,0,benign,ms,sms,OTP_Legit,Hong Leong: Your TAC is 164794. Do not share this code with anyone. Valid for 5 minutes.
+0e0f4bb60a4e,0,benign,ms,telegram,2FA_Login_Legit,【Lazada】登录验证码 421047。请勿分享。
+9a21c65be4c5,0,benign,ms,whatsapp,Telco_Notice_Legit,YES: Your bill RM 378.60 is ready. Pay by 05/03. View in YES app.
+4cadb3a0f4a4,0,benign,ms,sms,Job_Recruiter_Legit,您好Hakim，我们收到您的申请，可否在3pm进行简短面试？
+1b96e464fa88,0,benign,mix,whatsapp,Bank_Alert_Legit,"CIMB Alert: Card purchase RM 954.04 at 7-Eleven. Ref 863536. If not you, call CIMB hotline."
+c5cd0ebc35af,0,benign,mix,whatsapp,Courier_Update_Legit,【DHL】包裹已到达派送站点，运单号 968460810620。请留意派送。
+993526c6198d,0,benign,ms,whatsapp,OTP_Legit,AmBank: Your TAC is 091093. Do not share this code with anyone. Valid for 5 minutes.
+35c585280f02,0,benign,ms,sms,OTP_Legit,RHB: Your TAC is 105183. Do not share this code with anyone. Valid for 5 minutes.
+ad077688590b,0,benign,mix,whatsapp,Marketplace_Chat_Legit,"Sis, boleh COD esok 3pm? Saya nak ambil dekat Penang Queensbay."
+9fcbab0dc718,0,benign,ms,whatsapp,Job_Recruiter_Legit,"Hi Hakim, we reviewed your resume. Are you free for a short call today 11:20am? Reply YES/NO."
+76f28e42457a,0,benign,ms,whatsapp,OTP_Legit,【BSN】验证码 243426。请勿泄露给任何人。5分钟内有效。
+49424c41afcf,0,benign,zh,sms,Appointment_Legit,"Klinik: Temujanji pada 15/03 3pm. Balas 1 sahkan, 2 tukar masa."
+edca2166c6ba,0,benign,en,whatsapp,OTP_Legit,【UOB】验证码 233206。请勿泄露给任何人。5分钟内有效。
+1752dd9e3706,0,benign,ms,sms,Courier_Update_Legit,【PosLaju】包裹已到达派送站点，运单号 496739385258。请留意派送。
+7eb59c4b9e0d,0,benign,ms,telegram,Bank_Alert_Legit,"Bank Islam Alert: Card purchase RM 861.62 at Tealive. Ref 205061. If not you, call Bank Islam hotline."
+4f487969b0d7,0,benign,zh,sms,Gov_Reminder_Legit,LHDN: Reminder—please complete the required step before 23/03. Ignore if already done.
+6f470772a2e2,0,benign,ms,whatsapp,Refund_Legit,【Telegram】退款 RM 232.34 已处理，参考号 902115。
+b434fec9378d,0,benign,en,whatsapp,Telco_Notice_Legit,【Unifi】账单 RM 455.56 已生成，请于 06/03 前缴付。
+cda2501e6cfb,0,benign,zh,telegram,2FA_Login_Legit,【Shopee】登录验证码 514846。请勿分享。
+8558324f3462,0,benign,mix,whatsapp,Utility_Bill_Legit,Air Selangor: Bil RM 359.71 perlu dibayar sebelum 10/03. Ruj 514936.
+67c519eb6c89,0,benign,ms,sms,Refund_Legit,Facebook: Pemulangan dana RM 806.87 berjaya diproses. Ruj 491476.
+6854b3ce0173,0,benign,mix,whatsapp,QR_Payment_Legit,【DuitNow】已收到付款 RM 739.56，参考号 065379。
+3b7c3777cddf,0,benign,en,whatsapp,Appointment_Legit,【诊所】预约：05/03 4:30pm。回复1确认，回复2改期。
+58908fe46e88,0,benign,ms,whatsapp,Bank_Alert_Legit,"CIMB Alert: Online transaction RM 126.05. Ref 702966. If not you, call hotline."
+73da1315315a,0,benign,zh,sms,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天7:45pm自取，可以发地点吗？
+ca1d9457a60c,0,benign,en,telegram,OTP_Legit,【Public Bank】验证码 109439。请勿泄露给任何人。5分钟内有效。
+22cfd5969192,0,benign,zh,sms,Refund_Legit,Telegram: Pemulangan dana RM 419.32 berjaya diproses. Ruj 300981.
+3b5116025361,0,benign,zh,telegram,Courier_Update_Legit,PosLaju: Parcel out for delivery today. Tracking 768104091570. Please be available.
+acf8d3d9692a,0,benign,mix,whatsapp,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天8pm自取，可以发地点吗？
+7cb20a310c53,0,benign,ms,sms,Gov_Reminder_Legit,KWSP: Peringatan — sila semak notis rasmi. Tarikh akhir 28/03.
+e54af330a6c3,0,benign,zh,sms,Marketplace_Chat_Legit,"Hi, item still available? Can COD tomorrow 11:20am? Share location please."
+1b75d3330847,0,benign,mix,sms,2FA_Login_Legit,Shopee: Use code 662702 to complete sign-in. Do not share this code.
+8ef488e18914,0,benign,ms,sms,Telco_Notice_Legit,【Celcom】账单 RM 193.41 已生成，请于 09/03 前缴付。
+d137005e9862,0,benign,mix,whatsapp,Telco_Notice_Legit,Digi: Your bill RM 217.52 is ready. Pay by 06/03. View in Digi app.
+8ef47f12c9b7,0,benign,en,whatsapp,Utility_Bill_Legit,TNB: Your bill RM 821.73 due 19/03. Pay via official app. Ref 717751.
+1921b554e9d5,0,benign,zh,sms,Courier_Update_Legit,【DHL】包裹已到达派送站点，运单号 388496965328。请留意派送。
+505537951a0b,0,benign,ms,whatsapp,QR_Payment_Legit,DuitNow: Pembayaran diterima RM 863.57. Ruj 905072. Terima kasih.
+34236c9e8bff,0,benign,ms,whatsapp,Gov_Reminder_Legit,【Imigresen】提醒：请在 09/03 前完成相关事项。若已完成请忽略。
+3f66c7c103b2,0,benign,zh,whatsapp,Bank_Alert_Legit,【AmBank】消费提醒：RM 971.58，参考号 520885。如非本人，请致电客服。
+b2517f2fc20f,0,benign,en,sms,QR_Payment_Legit,【DuitNow】已收到付款 RM 652.45，参考号 044818。
+650c87141f94,0,benign,zh,sms,OTP_Legit,【Public Bank】验证码 275884。请勿泄露给任何人。5分钟内有效。
+f8aab44dab31,0,benign,zh,whatsapp,Telco_Notice_Legit,【Digi】账单 RM 863.21 已生成，请于 15/03 前缴付。
+c055b772a3f4,0,benign,en,whatsapp,QR_Payment_Legit,DuitNow: Pembayaran diterima RM 611.10. Ruj 022901. Terima kasih.
+ddcd008882ec,0,benign,en,whatsapp,Telco_Notice_Legit,Maxis: Your bill RM 128.83 is ready. Pay by 21/03. View in Maxis app.
+6aed86cce5c0,0,benign,en,whatsapp,Refund_Legit,【Instagram】退款 RM 573.59 已处理，参考号 406403。
+24d12a0c7520,0,benign,zh,whatsapp,Telco_Notice_Legit,Maxis: Your bill RM 170.39 is ready. Pay by 18/03. View in Maxis app.
+4fc746fdee35,0,benign,ms,sms,CustomerSupport_Callback_Legit,RHB Support: Ticket 009792 created. Our agent will call within 24 hours.
+95c406cd9f4f,0,benign,en,sms,2FA_Login_Legit,【Facebook】登录验证码 357972。请勿分享。
+681ba45b3e02,0,benign,en,whatsapp,QR_Payment_Legit,【DuitNow】已收到付款 RM 76.10，参考号 592124。
+c1d1e86f8576,0,benign,en,whatsapp,Gov_Reminder_Legit,JPJ: Reminder—please complete the required step before 21/03. Ignore if already done.
+4ebe311c475a,0,benign,ms,whatsapp,2FA_Login_Legit,Shopee: Kod 334280 untuk log masuk. Jangan kongsi kod ini.
+8d44a02ebfac,0,benign,en,whatsapp,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天10am自取，可以发地点吗？
+30b30cfd8640,0,benign,ms,whatsapp,OTP_Legit,【RHB】验证码 624731。请勿泄露给任何人。5分钟内有效。
+b43b22615834,0,benign,zh,whatsapp,Courier_Update_Legit,PosLaju: Bungkusan akan dihantar hari ini. No tracking 556238692221.
+db73909a6ad7,0,benign,ms,whatsapp,2FA_Login_Legit,WhatsApp: Use code 814353 to complete sign-in. Do not share this code.
+b77072abf7b6,0,benign,mix,whatsapp,2FA_Login_Legit,【TikTok Shop】登录验证码 039117。请勿分享。
+341e77c1d416,0,benign,en,sms,OTP_Legit,【RHB】验证码 228421。请勿泄露给任何人。5分钟内有效。
+a047eac9dd2b,0,benign,ms,whatsapp,Bank_Alert_Legit,"AmBank Alert: Card purchase RM 302.69 at MYDIN. Ref 739285. If not you, call AmBank hotline."
+b6b1a9eac777,0,benign,ms,whatsapp,QR_Payment_Legit,DuitNow: Payment received RM 346.84. Ref 289755. Thank you.
+8ab7ba45068c,0,benign,ms,whatsapp,Courier_Update_Legit,【PosLaju】包裹已到达派送站点，运单号 676212021697。请留意派送。
+461af1e87803,0,benign,zh,whatsapp,CustomerSupport_Callback_Legit,【客服】工单 650948 已创建，将在24小时内联系您。
+9b1dc1a127eb,0,benign,ms,sms,OTP_Legit,Public Bank: OTP 331586 untuk log masuk. Jangan kongsi kod ini. Sah 5 minit.
+d7329666453c,0,benign,zh,sms,Job_Recruiter_Legit,您好Raj，我们收到您的申请，可否在7:45pm进行简短面试？
+bf95f5945a3a,0,benign,ms,sms,Bank_Alert_Legit,【Maybank】消费提醒：RM 364.81，参考号 488510。如非本人，请致电客服。
+2ba293fcb9f2,0,benign,ms,sms,Courier_Update_Legit,PosLaju: Bungkusan akan dihantar hari ini. No tracking 210752245933.
+9ed5cdf311c1,0,benign,en,whatsapp,QR_Payment_Legit,DuitNow: Payment received RM 72.76. Ref 196570. Thank you.
+8547027432b9,0,benign,zh,sms,CustomerSupport_Callback_Legit,Public Bank Support: Ticket 083863 created. Our agent will call within 24 hours.
+b7f596fe91e4,0,benign,zh,whatsapp,Marketplace_Chat_Legit,"Sis, boleh COD esok 8pm? Saya nak ambil dekat Mid Valley."
+24565580ffc5,0,benign,mix,sms,OTP_Legit,【AmBank】验证码 647423。请勿泄露给任何人。5分钟内有效。
+33c789cf43d1,0,benign,ms,sms,Job_Recruiter_Legit,"Hai Siti, kami terima permohonan anda. Boleh interview ringkas esok 2:15pm?"
+ec04d8b31348,0,benign,zh,whatsapp,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天10am自取，可以发地点吗？
+2e754f0950df,0,benign,mix,whatsapp,Refund_Legit,Telegram: Pemulangan dana RM 308.90 berjaya diproses. Ruj 270866.
+51cb605e5d1d,0,benign,zh,whatsapp,2FA_Login_Legit,【Instagram】登录验证码 779010。请勿分享。
+a5bd18600909,0,benign,zh,sms,OTP_Legit,RHB: OTP 142241 untuk log masuk. Jangan kongsi kod ini. Sah 5 minit.
+a9f6f5dc31e0,0,benign,en,whatsapp,Refund_Legit,【Facebook】退款 RM 602.38 已处理，参考号 647436。
+40a102c57fe6,0,benign,zh,sms,Refund_Legit,【Shopee】退款 RM 725.56 已处理，参考号 788925。
+b0babbf72c9b,0,benign,zh,whatsapp,Bank_Alert_Legit,"RHB Alert: Card purchase RM 3.01 at 7-Eleven. Ref 119721. If not you, call RHB hotline."
+62552f7cf56a,0,benign,mix,sms,Gov_Reminder_Legit,PDRM: Reminder—please complete the required step before 12/03. Ignore if already done.
+49c5a0761045,0,benign,mix,whatsapp,Bank_Alert_Legit,【BSN】消费提醒：RM 725.49，参考号 892686。如非本人，请致电客服。
+36d956c3b7bf,0,benign,ms,whatsapp,Refund_Legit,【Lazada】退款 RM 885.08 已处理，参考号 465840。
+1539b2f12f41,0,benign,mix,whatsapp,Telco_Notice_Legit,【YES】账单 RM 447.81 已生成，请于 09/03 前缴付。
+824fc37e58b3,0,benign,zh,whatsapp,Bank_Alert_Legit,【RHB】消费提醒：RM 516.87，参考号 640155。如非本人，请致电客服。
+2bb0a3847a2c,0,benign,mix,whatsapp,QR_Payment_Legit,【DuitNow】已收到付款 RM 944.98，参考号 556613。
+2b0fb2df2891,0,benign,en,whatsapp,Refund_Legit,Lazada: Pemulangan dana RM 406.80 berjaya diproses. Ruj 436110.
+1241d048a9ac,0,benign,ms,whatsapp,Bank_Alert_Legit,【OCBC】消费提醒：RM 606.07，参考号 581477。如非本人，请致电客服。
+5668288ff33a,0,benign,mix,sms,Bank_Alert_Legit,"Bank Islam Alert: Online transaction RM 999.17. Ref 126796. If not you, call hotline."
+d6ce3ce08033,0,benign,ms,sms,Courier_Update_Legit,【SPX】包裹已到达派送站点，运单号 059640165820。请留意派送。
+feb895969ebe,0,benign,zh,sms,Courier_Update_Legit,【SPX】包裹已到达派送站点，运单号 215704331541。请留意派送。
+da4849aeae84,0,benign,ms,sms,Bank_Alert_Legit,"RHB Alert: Online transaction RM 950.56. Ref 975736. If not you, call hotline."
+18e2ebfe9a08,0,benign,mix,whatsapp,QR_Payment_Legit,DuitNow: Pembayaran diterima RM 782.20. Ruj 478261. Terima kasih.
+b2ecf4b3ea6d,0,benign,mix,whatsapp,OTP_Legit,【AmBank】验证码 740649。请勿泄露给任何人。5分钟内有效。
+d03b2fb78565,0,benign,zh,whatsapp,Utility_Bill_Legit,TNB: Your bill RM 699.68 due 10/03. Pay via official app. Ref 451462.
+5e6de1dafcf5,0,benign,en,sms,Bank_Alert_Legit,【AmBank】消费提醒：RM 502.97，参考号 129666。如非本人，请致电客服。
+b1b8565528a6,0,benign,en,sms,Refund_Legit,WhatsApp: Refund RM 745.46 has been processed to your original payment method. Ref 650609.
+0e749152f695,0,benign,zh,whatsapp,Courier_Update_Legit,【Flash Express】包裹已到达派送站点，运单号 955276365564。请留意派送。
+838c7045dba0,0,benign,en,whatsapp,OTP_Legit,【Public Bank】验证码 379956。请勿泄露给任何人。5分钟内有效。
+c1ccffc6e7e6,0,benign,zh,sms,Bank_Alert_Legit,"AmBank Alert: Card purchase RM 17.62 at Grab. Ref 100219. If not you, call AmBank hotline."
+d43f55d34886,0,benign,en,sms,Bank_Alert_Legit,"Public Bank Alert: Online transaction RM 975.80. Ref 046827. If not you, call hotline."
+549114ea705e,0,benign,ms,whatsapp,Bank_Alert_Legit,"BSN Alert: Card purchase RM 813.46 at Tealive. Ref 831323. If not you, call BSN hotline."
+26f0dda08de6,0,benign,ms,telegram,Courier_Update_Legit,【Flash Express】包裹已到达派送站点，运单号 892975001701。请留意派送。
+6748529e3ce0,0,benign,mix,whatsapp,Utility_Bill_Legit,【TNB】账单 RM 321.85 到期 20/03。请通过官方App缴费。参考号 452711。
+1361cd68c827,0,benign,mix,telegram,Telco_Notice_Legit,【YES】账单 RM 59.06 已生成，请于 18/03 前缴付。
+bbad021a0369,0,benign,zh,whatsapp,Bank_Alert_Legit,"Public Bank Alert: Online transaction RM 786.95. Ref 993588. If not you, call hotline."
+b2504fa66b95,0,benign,ms,whatsapp,CustomerSupport_Callback_Legit,Celcom Care: Ticket 578759 created. Kami akan hubungi anda dalam 24 jam.
+5bb97c71b9a9,0,benign,ms,whatsapp,CustomerSupport_Callback_Legit,OCBC Support: Ticket 376137 created. Our agent will call within 24 hours.
+e5f9155baa3b,0,benign,zh,whatsapp,Utility_Bill_Legit,【TNB】账单 RM 812.69 到期 06/03。请通过官方App缴费。参考号 478700。
+ec541a6a2c08,0,benign,ms,sms,Courier_Update_Legit,DHL: Parcel out for delivery today. Tracking 929831687397. Please be available.
+a43467124492,0,benign,ms,whatsapp,Courier_Update_Legit,【Flash Express】包裹已到达派送站点，运单号 420678831712。请留意派送。
+9b7cff4df1a9,0,benign,ms,sms,Courier_Update_Legit,【Shopee Express】包裹已到达派送站点，运单号 425135427849。请留意派送。
+571dfdaa4959,0,benign,en,whatsapp,Refund_Legit,【TikTok Shop】退款 RM 48.31 已处理，参考号 791769。
+5f8179f77815,0,benign,ms,sms,Job_Recruiter_Legit,您好Farah，我们收到您的申请，可否在8pm进行简短面试？
+96c59531f3d6,0,benign,en,sms,2FA_Login_Legit,【Telegram】登录验证码 051292。请勿分享。
+22a1a5e0a6e6,0,benign,zh,whatsapp,Job_Recruiter_Legit,"Hai Farah, kami terima permohonan anda. Boleh interview ringkas esok 4:30pm?"
+4eda3e00874f,0,benign,zh,telegram,Job_Recruiter_Legit,"Hi Aisyah, we reviewed your resume. Are you free for a short call today 8pm? Reply YES/NO."
+0f08c9e144d2,0,benign,ms,telegram,Refund_Legit,Instagram: Refund RM 618.88 has been processed to your original payment method. Ref 375265.
+b0eb44e5a3d2,0,benign,ms,sms,Telco_Notice_Legit,【TM】账单 RM 125.72 已生成，请于 20/03 前缴付。
+d7d3a0b4932e,0,benign,en,sms,Appointment_Legit,【诊所】预约：22/03 8pm。回复1确认，回复2改期。
+433dff2e6405,0,benign,ms,whatsapp,Marketplace_Chat_Legit,"Sis, boleh COD esok 4:30pm? Saya nak ambil dekat Setapak."
+2de46ec1bfb8,0,benign,zh,sms,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天3pm自取，可以发地点吗？
+c2a7368e206d,0,benign,en,sms,Telco_Notice_Legit,YES: Bil anda RM 516.37 telah dijana. Bayar sebelum 19/03. Semak dalam aplikasi YES.
+9198723344ed,0,benign,ms,telegram,Appointment_Legit,"Klinik: Temujanji pada 08/03 10am. Balas 1 sahkan, 2 tukar masa."
+a8249b83ff16,0,benign,ms,whatsapp,Courier_Update_Legit,【PosLaju】包裹已到达派送站点，运单号 184992618914。请留意派送。
+a651c2937a65,0,benign,mix,sms,QR_Payment_Legit,DuitNow: Pembayaran diterima RM 444.64. Ruj 018242. Terima kasih.
+0b1ab1818527,0,benign,en,telegram,Job_Recruiter_Legit,"Hi Farah, we reviewed your resume. Are you free for a short call today 7:45pm? Reply YES/NO."
+22c72023e7b6,0,benign,ms,whatsapp,CustomerSupport_Callback_Legit,YES Care: Ticket 400499 created. Kami akan hubungi anda dalam 24 jam.
+7715c439795c,0,benign,en,whatsapp,OTP_Legit,AmBank: Your TAC is 557192. Do not share this code with anyone. Valid for 5 minutes.
+a6d9e10882d0,0,benign,mix,whatsapp,OTP_Legit,AmBank: Your TAC is 261990. Do not share this code with anyone. Valid for 5 minutes.
+f41431ac8b49,0,benign,mix,sms,Bank_Alert_Legit,【RHB】消费提醒：RM 313.72，参考号 909133。如非本人，请致电客服。
+3802c88bd833,0,benign,ms,sms,2FA_Login_Legit,Facebook: Use code 338484 to complete sign-in. Do not share this code.
+1349a2a05d00,0,benign,en,whatsapp,Courier_Update_Legit,【J&T】包裹已到达派送站点，运单号 577027278576。请留意派送。
+acccb857b54f,0,benign,ms,whatsapp,OTP_Legit,【Bank Islam】验证码 833898。请勿泄露给任何人。5分钟内有效。
+915187028f3f,0,benign,en,sms,OTP_Legit,Maybank: OTP 027703 untuk log masuk. Jangan kongsi kod ini. Sah 5 minit.
+889f2896a1ed,0,benign,en,sms,QR_Payment_Legit,DuitNow: Pembayaran diterima RM 510.95. Ruj 622683. Terima kasih.
+974338663a3b,0,benign,mix,telegram,CustomerSupport_Callback_Legit,Maybank Support: Ticket 776719 created. Our agent will call within 24 hours.
+c553141f59a0,0,benign,en,sms,Telco_Notice_Legit,【Digi】账单 RM 111.04 已生成，请于 27/02 前缴付。
+cdb3c68411d5,0,benign,ms,sms,Gov_Reminder_Legit,【JPJ】提醒：请在 22/03 前完成相关事项。若已完成请忽略。
+a3af05804b3c,0,benign,zh,whatsapp,Utility_Bill_Legit,Air Selangor: Bil RM 145.12 perlu dibayar sebelum 27/02. Ruj 046963.
+f7b17f9a53af,0,benign,zh,sms,Telco_Notice_Legit,Celcom: Your bill RM 672.03 is ready. Pay by 28/03. View in Celcom app.
+d95ee586e91f,0,benign,en,whatsapp,CustomerSupport_Callback_Legit,【客服】工单 426818 已创建，将在24小时内联系您。
+9433564c24ad,0,benign,ms,whatsapp,Utility_Bill_Legit,TNB: Your bill RM 513.58 due 24/03. Pay via official app. Ref 800384.
+2dd18fac2183,0,benign,zh,telegram,Utility_Bill_Legit,Air Selangor: Bil RM 303.33 perlu dibayar sebelum 02/03. Ruj 666099.
+566a81867f38,0,benign,en,whatsapp,OTP_Legit,CIMB: Your TAC is 564679. Do not share this code with anyone. Valid for 5 minutes.
+b3f930b2183f,0,benign,mix,sms,Telco_Notice_Legit,YES: Bil anda RM 867.32 telah dijana. Bayar sebelum 06/03. Semak dalam aplikasi YES.
+30f29a23a259,0,benign,ms,whatsapp,Job_Recruiter_Legit,"Hai Nur, kami terima permohonan anda. Boleh interview ringkas esok 3pm?"
+4c71fd455138,0,benign,zh,sms,QR_Payment_Legit,【DuitNow】已收到付款 RM 227.57，参考号 567982。
+50d47beccafb,0,benign,en,whatsapp,2FA_Login_Legit,Lazada: Kod 759492 untuk log masuk. Jangan kongsi kod ini.
+6bbddca568f0,0,benign,ms,sms,Telco_Notice_Legit,【Maxis】账单 RM 528.53 已生成，请于 24/03 前缴付。
+ed938948e942,0,benign,mix,whatsapp,Telco_Notice_Legit,【Celcom】账单 RM 47.06 已生成，请于 11/03 前缴付。
+423147a4af3c,0,benign,mix,sms,OTP_Legit,【CIMB】验证码 834301。请勿泄露给任何人。5分钟内有效。
+27f7bcb1d65a,0,benign,ms,whatsapp,OTP_Legit,AmBank: OTP 183982 untuk log masuk. Jangan kongsi kod ini. Sah 5 minit.
+9e6aafcb2ec2,0,benign,ms,sms,Telco_Notice_Legit,TM: Your bill RM 346.55 is ready. Pay by 21/03. View in TM app.
+621afcec6652,0,benign,ms,whatsapp,2FA_Login_Legit,Instagram: Use code 868727 to complete sign-in. Do not share this code.
+7043ea1dc0f0,0,benign,mix,sms,Job_Recruiter_Legit,"Hi Nur, we reviewed your resume. Are you free for a short call today 4:30pm? Reply YES/NO."
+a7cb04b7e298,0,benign,mix,whatsapp,Marketplace_Chat_Legit,你好，请问还在吗？我可以明天2:15pm自取，可以发地点吗？
+4f3fbdcc313b,0,benign,en,telegram,Utility_Bill_Legit,【TNB】账单 RM 259.27 到期 09/03。请通过官方App缴费。参考号 748969。
+sample_id,expected_label_id,expected_label,lang,channel,subtype,text
+m0001,0,benign,en,sms,OTP_Legit,"Maybank OTP 482913 for login. Do not share. Expires in 5 minutes."
+m0002,0,benign,en,sms,Card_Transaction_Legit,"CIMB Alert: Card purchase RM35.90 at MYDIN. If not you call official hotline 03-6204-7788."
+m0003,0,benign,ms,sms,Utility_Bill_Legit,"TNB: Bil elektrik RM182.58 akan tamat pada 15/03. Sila bayar melalui aplikasi rasmi myTNB."
+m0004,0,benign,en,whatsapp,Refund_Legit,"Shopee: Refund RM599.48 has been processed to your original payment method. Ref 513709."
+m0005,0,benign,en,push,Ride_Receipt_Legit,"Grab receipt: Trip to Mid Valley completed. Fare RM14.20 charged to ending 2291."
+m0006,0,benign,en,email,University_Notice_Legit,"Faculty notice: Tomorrow class moved to Room B-12 at 10:00 AM. See official LMS for details."
+m0007,0,benign,en,whatsapp,Job_Recruiter_Legit,"Hi Aina, we reviewed your resume. Are you available for an interview call at 3 PM today?"
+m0008,0,benign,mix,whatsapp,Family_Chat_Legit,"Ma, nanti balik tolong beli roti ya. Kita dinner pukul 8 malam."
+m0009,0,benign,ms,whatsapp,Marketplace_Chat_Legit,"Boleh COD esok jam 9 malam dekat LRT Ara Damansara?"
+m0010,0,benign,en,sms,Telco_Renewal_Legit,"CelcomDigi: Your monthly plan renews on 01/03. Manage add-ons in Celcom Life app."
+m0011,0,benign,en,sms,Clinic_Reminder_Legit,"Clinic reminder: Appointment with Dr Tan on 28 Feb at 4:30 PM. Reply C to confirm."
+m0012,0,benign,en,email,Insurance_Receipt_Legit,"Policy payment received. Receipt ID INS-2026-1182 is now available in your portal."
+m0013,0,benign,en,push,Payroll_Credit_Legit,"Payroll credited: RM4200.00 deposited to your salary account ending 7712."
+m0014,0,benign,en,email,Tax_Update_Legit,"LHDN status update: Your filing is received. Please check MyTax account for acknowledgement."
+m0015,0,benign,en,telegram,Security_Code_Legit,"Telegram code: 483920. Do not share this code with anyone."
+m0016,0,benign,en,whatsapp,Security_Code_Legit,"WhatsApp verification code 729551. This code expires in 2 minutes."
+m0017,0,benign,en,sms,Flight_Checkin_Legit,"AirAsia: Online check-in opens now for flight AK6112 tomorrow."
+m0018,0,benign,en,email,Hotel_Confirm_Legit,"Booking confirmed at Hotel Sentral for 12 Mar. Confirmation number HS204871."
+m0019,0,benign,ms,push,Gov_Benefit_Legit,"eMadani: Kredit RM100 telah dimasukkan ke dompet rasmi anda."
+m0020,0,benign,en,sms,Fraud_Alert_Legit,"Maybank: New transfer detected RM120. If unauthorized call official number on your card."
+m0021,0,benign,en,sms,Delivery_Update_Legit,"Pos Malaysia: Parcel is out for delivery today between 2 PM and 6 PM."
+m0022,0,benign,en,push,Food_Delivery_Legit,"Foodpanda rider is arriving in 6 minutes with your order."
+m0023,0,benign,en,email,Meeting_Invite_Legit,"Team meeting invite accepted for Friday 11:00 AM via Google Meet."
+m0024,0,benign,en,telegram,Work_Reminder_Legit,"Daily standup starts in 10 minutes. Please update your task board."
+m0025,0,benign,ms,whatsapp,School_Notice_Legit,"Makluman PIBG: Mesyuarat ibu bapa pada Sabtu 9:00 pagi di dewan sekolah."
+m0026,0,benign,en,email,Library_Reminder_Legit,"Library reminder: Book due in 2 days. Renew online if needed."
+m0027,0,benign,en,sms,Gym_Renewal_Legit,"Anytime Fitness: Membership renews on 05/03. Visit app for plan details."
+m0028,0,benign,en,sms,Broadband_Maintenance_Legit,"Unifi notice: Planned maintenance in your area tonight from 1 AM to 3 AM."
+m0029,0,benign,ms,sms,Utility_Maintenance_Legit,"SYABAS: Kerja penyelenggaraan paip pada 3 Mac. Gangguan sementara mungkin berlaku."
+m0030,0,benign,en,push,Parking_Receipt_Legit,"Touch n Go eWallet: Parking payment RM4.00 completed at NU Sentral."
+m0031,0,benign,mix,whatsapp,Buyer_Chat_Legit,"Hi seller, saiz M masih ada? Kalau ada saya bank in malam ni."
+m0032,0,benign,en,whatsapp,Friend_Chat_Legit,"Happy birthday! Dinner this Friday at 7 PM at SS15, can you make it?"
+m0033,0,benign,en,sms,Dentist_Reminder_Legit,"Dental clinic reminder: Scaling appointment on Monday 9:30 AM."
+m0034,0,benign,en,push,Pharmacy_Pickup_Legit,"Guardian Pharmacy: Your prescription refill is ready for pickup."
+m0035,0,benign,en,sms,Service_Appointment_Legit,"Perodua Service: Appointment confirmed for 2 Mar at 10:00 AM."
+m0036,0,benign,en,email,Statement_Ready_Legit,"Your monthly bank statement is now ready in secure inbox."
+m0037,0,benign,en,email,Claim_Approved_Legit,"Medical claim approved for RM180.00 and will be credited within 3 business days."
+m0038,0,benign,en,email,Donation_Receipt_Legit,"Thank you for your donation. Official receipt DNR-99271 attached in portal."
+m0039,0,benign,en,sms,New_Login_Legit,"Google: New sign-in from Chrome on Windows. If this was you no action needed."
+m0040,0,benign,en,email,Event_Ticket_Legit,"Concert e-ticket issued successfully. Seat A12. Access via official app only."
+m0041,0,benign,ms,sms,Pickup_Code_Legit,"Ninja Van: Kod ambil sendiri anda ialah 440821 di locker Seksyen 14."
+m0042,0,benign,en,push,Tuition_Receipt_Legit,"Tuition center payment received for March. Receipt TC-3041."
+m0043,0,benign,zh,wechat,Delivery_Legit,"顺丰通知：您的包裹今天派送，请保持电话畅通。"
+m0044,0,benign,ms,sms,Bank_Reminder_Legit,"Bank Islam: Ansuran pembiayaan anda akan ditolak secara auto pada 1 haribulan."
+m0045,0,benign,en,email,Travel_Itinerary_Legit,"Malaysia Airlines itinerary updated. Gate information will be posted 2 hours before departure."
+m0046,0,benign,mix,whatsapp,Team_Chat_Legit,"Guys please submit report by 5 PM ya, boss nak review malam ini."
+m0047,0,benign,zh,wechat,Family_Chat_Legit,"今晚回家吃饭吗？妈妈煮了你喜欢的汤。"
+m0048,0,benign,en,telegram,Channel_Update_Legit,"Community update: Version 1.3 released. Changelog posted in pinned message."
+m0049,0,benign,en,sms,VPN_Code_Legit,"Company VPN code 663204. Valid for 60 seconds."
+m0050,0,benign,en,whatsapp,Rent_Reminder_Legit,"Hi tenant, monthly rent is due on the 1st as per agreement. Thank you."
+m0051,1,scam,en,sms,Bank_Phishing,"Maybank account suspended due to unusual activity. Verify now at maybank-secure-login.com to avoid permanent block."
+m0052,1,scam,ms,sms,Parcel_Fee_Scam,"PosLaju: Bungkusan anda ditahan. Bayar caj kastam RM2.99 segera di poslaju-track-my.com."
+m0053,1,scam,en,whatsapp,Account_Threat_Scam,"Your WhatsApp account will be deleted in 12 hours. Confirm ownership at whtasapp-a.com now."
+m0054,1,scam,en,telegram,Credential_Phish,"Telegram security alert: suspicious login detected. Re-verify at telegram-safe-check.com immediately."
+m0055,1,scam,en,whatsapp,Investment_Scam,"Guaranteed 15 percent daily profit from AI trading. Join VIP group and start with RM500 today."
+m0056,1,scam,ms,whatsapp,Job_Task_Scam,"Kerja mudah dari rumah. Like video dapat RM80 sehari. Deposit kecil RM50 untuk aktifkan akaun."
+m0057,1,scam,ms,sms,Loan_Fee_Scam,"Pinjaman lulus serta-merta. Bayar yuran proses RM300 dahulu untuk pelepasan dana."
+m0058,1,scam,en,whatsapp,Romance_Money_Scam,"Baby I am stuck at airport. Please transfer RM1200 now for emergency clearance."
+m0059,1,scam,en,sms,Authority_Impersonation_Scam,"PDRM notice: Warrant issued under your IC. Call 01123456789 now to settle case privately."
+m0060,1,scam,en,email,Tax_Refund_Phish,"You are eligible for urgent tax refund. Submit banking details at lhdn-refund-fast.net today."
+m0061,1,scam,en,sms,Ewallet_Prize_Scam,"Touch n Go reward pending RM500. Claim immediately at tng-bonus-claim.net within 30 minutes."
+m0062,1,scam,en,whatsapp,Giveaway_Scam,"Congrats! You won iPhone 15 from official campaign. Pay RM9 shipping to secure gift now."
+m0063,1,scam,en,email,Invoice_Malware_Scam,"Final warning: unpaid invoice attached. Open file and login to prevent legal action."
+m0064,1,scam,en,whatsapp,Payroll_Tac_Scam,"Finance team here, payroll verification failed. Send your TAC code now to release salary."
+m0065,1,scam,en,whatsapp,CEO_Impersonation_Scam,"I need you to buy 10 gift cards urgently for clients. Send card photos and PIN now."
+m0066,1,scam,en,telegram,Crypto_Double_Scam,"Send 0.1 BTC and receive 0.2 BTC back in 10 minutes. Limited blockchain promotion."
+m0067,1,scam,en,sms,TechSupport_Remote_Scam,"Microsoft security detected virus on your phone. Install QuickAssist and share access code now."
+m0068,1,scam,en,email,Subscription_Phish_Scam,"Your antivirus auto-renewal of RM399 is successful. Cancel immediately via secure-support-refund.com."
+m0069,1,scam,ms,whatsapp,QR_Reverse_Scam,"Saya tersalah transfer duit. Scan QR ini untuk terima balik tetapi kena masukkan PIN bank anda."
+m0070,1,scam,en,sms,Toll_Fine_Scam,"Outstanding toll fine RM47. Pay now at myjpj-paypenalty.cc to avoid court action."
+m0071,1,scam,ms,sms,Immigration_Scam,"Imigresen: Pasport anda disekat. Bayar kompaun segera melalui portal imigresen-fast.org."
+m0072,1,scam,en,whatsapp,Ecommerce_Phish_Scam,"Shopee account restricted due to refund abuse. Verify identity at shopee-safe-center.com."
+m0073,1,scam,en,sms,Streaming_Phish_Scam,"Netflix payment failed. Update card at netflix-billing-update.co to continue watching."
+m0074,1,scam,en,email,AppleID_Phish_Scam,"Apple ID locked for security reasons. Confirm details at appleid-verify-now.help."
+m0075,1,scam,en,email,Paypal_Phish_Scam,"PayPal dispute opened on your account. Login to review transaction at paypal-security-case.net."
+m0076,1,scam,en,whatsapp,Vishing_OTP_Scam,"Bank officer here. To stop fraudulent transfer please reply with OTP sent to your phone now."
+m0077,1,scam,en,sms,Extortion_Scam,"We have your family member. Transfer RM3000 to this account now and do not call police."
+m0078,1,scam,ms,whatsapp,LuckyDraw_Scam,"Tahniah anda menang cabutan bertuah RM10000. Kongsi maklumat bank untuk proses tuntutan."
+m0079,1,scam,en,whatsapp,Recruitment_Deposit_Scam,"Remote admin job confirmed. Pay onboarding fee RM120 to reserve your placement."
+m0080,1,scam,en,email,Fake_Charity_Scam,"Flood relief urgent. Donate to this personal account within 1 hour to save lives."
+m0081,1,scam,en,telegram,Investment_Mining_Scam,"Cloud mining package gives guaranteed 8 percent daily returns. Withdraw anytime with no risk."
+m0082,1,scam,en,sms,Redelivery_Phish_Scam,"Parcel delivery failed. Schedule redelivery and pay RM1.50 at ninja-redeliver-track.com."
+m0083,1,scam,ms,sms,Sim_Block_Scam,"Telco: SIM anda akan diblokir malam ini. Sahkan identiti di digi-verify-now.site."
+m0084,1,scam,ms,whatsapp,Gov_Subsidy_Phish_Scam,"Subsidi kerajaan baharu dibuka. Klik bantuan-rakyat-online.net dan isi TAC untuk pengesahan."
+m0085,1,scam,en,telegram,Exam_Leak_Scam,"Get real exam answers before paper starts. Pay RM200 now for instant access."
+m0086,1,scam,en,whatsapp,Rental_Deposit_Scam,"Nice unit available but high demand. Transfer booking deposit today to secure viewing slot."
+m0087,1,scam,en,whatsapp,Romance_Customs_Scam,"My gift parcel is held by customs. Please pay RM850 clearance fee for me now."
+m0088,1,scam,en,sms,SocialMedia_Phish_Scam,"Facebook page violation detected. Appeal immediately at fb-policy-check.support."
+m0089,1,scam,en,telegram,Premium_Gift_Scam,"You received Telegram Premium gift. Pay RM6 verification fee to activate now."
+m0090,1,scam,en,email,Medical_Rebate_Phish_Scam,"Medical reimbursement pending. Confirm NRIC and bank PIN at claims-fasttrack.health."
+m0091,1,scam,ms,sms,Utility_Disconnect_Scam,"TNB: Bekalan elektrik akan dipotong hari ini. Bayar segera di tnb-payment-center.help."
+m0092,1,scam,en,email,Court_Summon_Malware_Scam,"Court summon attached in PDF. Download and sign immediately to avoid arrest."
+m0093,1,scam,en,telegram,Crypto_Recovery_Scam,"We can recover your lost crypto instantly. Pay 20 percent service fee upfront."
+m0094,1,scam,en,whatsapp,SeedPhrase_Theft_Scam,"Wallet support here. Share your 12-word seed phrase to restore your funds safely."
+m0095,1,scam,en,sms,APK_Update_Scam,"Bank app outdated. Install new secure APK from maybank-update-app.download now."
+m0096,1,scam,en,whatsapp,AccountTakeover_Code_Scam,"I sent a 6-digit code to your phone by mistake. Please forward it back urgently."
+m0097,1,scam,en,email,Education_Portal_Phish_Scam,"University fee overdue. Pay immediately at my-universty-pay.com to avoid suspension."
+m0098,1,scam,ms,whatsapp,Voucher_Phish_Scam,"Voucher makanan RM50 percuma untuk 100 pengguna pertama. Klik tebus-voucher-rm50.site sekarang."
+m0099,1,scam,en,email,Insurance_Fee_Scam,"Insurance claim approved but release requires RM150 processing payment today."
+m0100,1,scam,mix,whatsapp,Donation_Phish_Scam,"Bro this is urgent zakat match program. Fill bank form at zakat-help-fast.net before midnight."

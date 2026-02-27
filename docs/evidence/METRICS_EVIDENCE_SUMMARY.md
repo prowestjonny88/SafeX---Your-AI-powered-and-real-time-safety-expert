@@ -63,16 +63,21 @@ Formula:
 
 ## 4) False positive rate (FPR)
 
-Status: Pending dedicated labeled evaluation run
+Status: Measured from on-device labeled evaluation
 
-How to finalize evidence:
-1. Use labeled set (benign + scam, mixed language).
-2. Run full detection pipeline.
-3. Build confusion matrix and compute:
-   - `FPR = FP / (FP + TN)`
+Artifacts:
+- [fpr_confusion_matrix_20260226.md](./fpr_confusion_matrix_20260226.md)
+- [fpr_confusion_matrix_20260226.json](./fpr_confusion_matrix_20260226.json)
 
-Current blockers without app-code changes:
-- Existing benchmark output does not emit concrete score/decision values due escaped placeholders.
+Latest values from artifact:
+- Confusion matrix: `TP=45, FP=78, TN=172, FN=5` (total 300 rows)
+- `FPR = 0.312` (31.2%)
+- `Recall (TPR) = 0.900` (90.0%)
+- `Accuracy = 0.7233` (72.33%)
+
+Benign-only slice (original 200-row benign set):
+- `FP=56, TN=144`
+- `FPR = 0.28` (28.0%)
 
 ---
 
@@ -83,4 +88,5 @@ From repo root:
 ```powershell
 .\scripts\metrics\Collect-AndroidMetrics.ps1 -RunTest
 .\scripts\metrics\Collect-FeedbackMetrics.ps1
+.\gradlew.bat :app:connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=com.safex.app.FprDatasetTest" --no-daemon
 ```
